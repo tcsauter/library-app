@@ -8,7 +8,7 @@ export const LibraryServices = () => {
                         If you cannot find what you're looking for, send our library admin a personal message!
                     </p>
                     <div className='d-grid gap-2 justify-content-md-start mb-4 mb-lg-3'>
-                        <a className='btn main-color btn-lg text-white' href='#'>Sign up</a>
+                        <a className='btn main-color btn-lg text-white' href='src/layouts/HomePage#'>Sign up</a>
                     </div>
                 </div>
                 <div className='col-lg-4 offset-lg-1 shadow-lg lost-image'>

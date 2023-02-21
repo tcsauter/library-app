@@ -59,19 +59,19 @@ export const Carousel = () => {
                 <div className='row d-flex justify-content-center align-items-center'>
                     <div className='text-center'>
                         <img
-                            src={require('./../../Images/BooksImages/book-luv2code-1000.png')}
+                            src={require('../../../Images/BooksImages/book-luv2code-1000.png')}
                             width='151'
                             height='233'
                             alt='book'
                         />
                         <h6 className='mt-2'><b>Book</b></h6>
                         <p>Luv2Code</p>
-                        <a className='btn main-color text-white' href='#'>Reserve</a>
+                        <a className='btn main-color text-white' href='src/layouts/HomePage#'>Reserve</a>
                     </div>
                 </div>
             </div>
             <div className='homepage-carousel-title mt-3'>
-                <a className='btn btn-outline-secondary btn-lg' href='#'>View More</a>
+                <a className='btn btn-outline-secondary btn-lg' href='src/layouts/HomePage#'>View More</a>
             </div>
         </div>
     );
