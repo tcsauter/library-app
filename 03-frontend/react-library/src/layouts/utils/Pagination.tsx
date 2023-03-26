@@ -41,13 +41,13 @@ export const Pagination: React.FC<{
                     <button className='page-link'>First Page</button>
                 </li>
                 {pageNumbers.map(number => {
-                    <li onClick={() => props.paginate(number)}
+                    return(<li onClick={() => props.paginate(number)}
                         className={'page-item' + (props.currentPage === number ? 'active' : '')}
                         key={number}>
                         <button className='page-link'>
                             {number}
                         </button>
-                    </li>
+                    </li>)
                 })}
                 <li className='page-item' onClick={() => props.paginate(props.totalPages)}>
                     <button className='page-link'>
