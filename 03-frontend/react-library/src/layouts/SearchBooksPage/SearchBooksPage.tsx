@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import BookModel from "../../models/BookModel";
 import {SpinnerLoading} from "../utils/SpinnerLoading";
 import {SearchBook} from "./components/SearchBook";
@@ -9,7 +9,7 @@ export const SearchBooksPage = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [httpError, setHttpError] = useState(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [booksPerPage] =  useState(5);
+    const [booksPerPage] = useState(5);
     const [totalAmountOfBooks, setTotalAmountOfBooks] = useState(0);
     const [totalPages, setTotalPages] = useState(0);
     const [search, setSearch] = useState("");
@@ -29,7 +29,7 @@ export const SearchBooksPage = () => {
 
             const response = await fetch(url);
 
-            if(!response.ok){
+            if (!response.ok) {
                 throw new Error("Something went wrong!");
             }
 
@@ -42,7 +42,7 @@ export const SearchBooksPage = () => {
 
             const loadedBooks: BookModel[] = [];
 
-            for(const key in responseData){
+            for (const key in responseData) {
                 loadedBooks.push({
                     id: responseData[key].id,
                     title: responseData[key].title,
@@ -65,14 +65,14 @@ export const SearchBooksPage = () => {
         window.scrollTo(0, 0)
     }, [booksPerPage, currentPage, searchUrl])
 
-    if(isLoading){
-        return(
-            <SpinnerLoading />
+    if (isLoading) {
+        return (
+            <SpinnerLoading/>
         );
     }
 
-    if(httpError){
-        return(
+    if (httpError) {
+        return (
             <div className='container m-5'>
                 <p>{httpError}</p>
             </div>
@@ -94,7 +94,7 @@ export const SearchBooksPage = () => {
         totalAmountOfBooks;
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
-    return(
+    return (
         <div>
             <div className='container'>
                 <div>
@@ -157,7 +157,7 @@ export const SearchBooksPage = () => {
                         <SearchBook book={book} key={book.id} />
                     ))}
                     {totalPages > 1 &&
-                        <Pagination currentPage={currentPage} totalPages={totalPages} paginate={paginate} />
+                        <Pagination currentPage={currentPage} totalPages={totalPages} paginate={paginate}/>
                     }
                 </div>
             </div>
