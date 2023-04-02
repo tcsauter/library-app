@@ -25,7 +25,7 @@ export const SearchBooksPage = () => {
             if (searchUrl === '') {
                 url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
             } else {
-                url = baseUrl + searchUrl;
+                url = baseUrl + searchUrl + `&page=${currentPage - 1}&size=${booksPerPage}`;
             }
 
             const response = await fetch(url);
@@ -85,7 +85,7 @@ export const SearchBooksPage = () => {
         if (search === '') {
             setSearchUrl('')
         } else {
-            setSearchUrl(`/search/findByTitleContaining?title=${search}&page=0&size=${booksPerPage}`)
+            setSearchUrl(`/search/findByTitleContaining?title=${search}`)
         }
     }
 
