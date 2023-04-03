@@ -25,7 +25,8 @@ export const SearchBooksPage = () => {
             if (searchUrl === '') {
                 url = `${baseUrl}?page=${currentPage - 1}&size=${booksPerPage}`;
             } else {
-                url = baseUrl + searchUrl + `&page=${currentPage - 1}&size=${booksPerPage}`;
+                let searchWithPage = searchUrl.replace("<pageNumber>", `${currentPage - 1}`);
+                url = baseUrl + searchWithPage;
             }
 
             const response = await fetch(url);
@@ -85,11 +86,15 @@ export const SearchBooksPage = () => {
         if (search === '') {
             setSearchUrl('')
         } else {
-            setSearchUrl(`/search/findByTitleContaining?title=${search}`)
+            setSearchUrl(`/search/findByTitleContaining?title=${search}&page=<pageNumber>&size=${booksPerPage}`)
         }
+        setCategorySelection('Book category');
     }
 
     const categoryField = (value: string) => {
+        setCurrentPage(1);
+        //Clear search input and search state when searching by category
+        setSearch((window.document.getElementById("searchInput") as HTMLInputElement).value = "");
         if (
             value.toLowerCase() === 'front end' ||
             value.toLowerCase() === 'back end' ||
@@ -108,10 +113,10 @@ export const SearchBooksPage = () => {
             }
 
             setCategorySelection(value);
-            setSearchUrl(`/search/findByCategory?category=${searchValue}`);
+            setSearchUrl(`/search/findByCategory?category=${searchValue}&page=<pageNumber>&size=${booksPerPage}`);
         }else{
             setCategorySelection('All');
-            setSearchUrl(``)
+            setSearchUrl(`?page=<pageNumber>&size=${booksPerPage}`)
         }
     }
 
@@ -130,7 +135,7 @@ export const SearchBooksPage = () => {
                         <div className='col-6'>
                             <div className='d-flex'>
                                 <input className='form-control me-2' type='search'
-                                       placeholder='search' aria-label='Search'
+                                       placeholder='search' aria-label='Search' id='searchInput'
                                        onChange={e => setSearch(e.target.value)}
                                 />
                                 <button className='btn btn-outline-success' onClick={() => searchHandleChange()}>
