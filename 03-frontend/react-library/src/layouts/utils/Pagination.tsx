@@ -26,10 +26,10 @@ export const Pagination: React.FC<{
 
         pageNumbers.push(props.currentPage);
 
-        if (props.currentPage >= props.currentPage + 1) {
+        if (props.totalPages >= props.currentPage + 1) {
             pageNumbers.push(props.currentPage +  1);
         }
-        if (props.currentPage >= props.currentPage + 2) {
+        if (props.totalPages >= props.currentPage + 2) {
             pageNumbers.push(props.currentPage +  2);
         }
     }
